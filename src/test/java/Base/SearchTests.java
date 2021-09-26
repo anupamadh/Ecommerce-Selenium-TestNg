@@ -3,10 +3,9 @@ package Base;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.HomePage;
 
 public class SearchTests extends BaseTest {
-    Double expectedSubtotal = new Double(710.00);
+    double expectedSubtotal =0;
 
     @Test(priority = 1, dataProvider = "shoppingData")
     public void searchVerification(String product, int index){
@@ -17,6 +16,8 @@ public class SearchTests extends BaseTest {
         Assert.assertTrue(searchResult);
         result.printPrices();
         productPage = result.clickOnProduct(index);
+        expectedSubtotal = expectedSubtotal + productPage.getProductPrice();
+        System.out.println("sum= " + expectedSubtotal);
         productPage.addToCart();
         try{
             Thread.sleep(4000);
@@ -29,7 +30,7 @@ public class SearchTests extends BaseTest {
     public void subtotalVerification(){
         cartPage = productPage.ViewCart();
         Double actualSubtotal = cartPage.verifySubTotal();
-        Assert.assertEquals(cartPage.verifySubTotal(), expectedSubtotal);
+        Assert.assertEquals(cartPage.verifySubTotal().doubleValue(), expectedSubtotal);
     }
 
     @DataProvider(name="shoppingData")
@@ -37,5 +38,7 @@ public class SearchTests extends BaseTest {
         Object data[][] = {{"Chair",5},{"Table",3}};
         return data;
     }
+
+
 
 }

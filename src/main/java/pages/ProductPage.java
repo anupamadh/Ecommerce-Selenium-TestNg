@@ -13,7 +13,7 @@ public class ProductPage extends BasePage {
     private JavascriptExecutor js;
     private By addToCartButton = By.xpath("//button[@name='add-to-cart']");
     private By viewCartButton = By.xpath("//a[contains(@title,'View your shopping cart')]");
-    private By priceDisplayed = By.xpath("//span[contains(@class,'woocommerce-Price-amount amount')]");
+    private By priceDisplayed = By.xpath("//p[@class='price']//span[contains(@class,'woocommerce-Price-amount amount')]");
 
     public ProductPage(WebDriver driver){
         super(driver);
