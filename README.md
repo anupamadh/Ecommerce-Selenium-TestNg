@@ -14,7 +14,7 @@
 11.	Go to cart.
 12.	Verify the subtotal is correct.
 
-### Framework Walkthrogh:
+### Framework Walkthrough:
 This framework is developed using Java TestNg framework with Page Object Model design pattern. The page bases are defined under src/main and the tests are written under src/tests. Base Tests are under test/java/Base.
 
 ### Test Execution:
